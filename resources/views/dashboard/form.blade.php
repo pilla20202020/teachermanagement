@@ -57,18 +57,26 @@
 
   <div class="form-group">
     <label for="exampleFormControlSelect1">Example select</label>
-    <select class="form-control" name="faculty" id="exampleFormControlSelect1">
+    <select class="form-control" name="faculty" id="faculty">
+      <option disabled selected>--Choose Any option--</option>
       <option value="science">Science</option>
       <option value="management">Management</option>
-      <option value="humanities">Humanities</option>
     </select>
   </div>
-  <div class="form-group">
+  <div class="form-group d-none" id="management">
     <label for="exampleFormControlSelect2">Example multiple select</label>
-    <select multiple name="subject[]" class="form-control" id="exampleFormControlSelect2">
+    <select multiple name="subject[]" class="form-control" id="management">
       <option value="social" name="social">Social</option>
       <option value="english" name="english">English</option>
       <option value="nepali" name="nepali">Nepali</option>
+    </select>
+  </div>
+  <div class="form-group d-none" id="science">
+    <label for="exampleFormControlSelect2">Example multiple select</label>
+    <select multiple name="subject[]" class="form-control">
+      <option value="social" name="math">Math</option>
+      <option value="english" name="physics">Physics</option>
+      <option value="nepali" name="chemistry">Chemistry</option>
     </select>
   </div>
   <div class="col-lg-12 col-md-12">
@@ -81,9 +89,28 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script>
-        function multipleFunc() {
-           document.getElementById("mySelect").multiple = true;
-        }
-     </script>
+        $(document).ready(function(){
+        $('#faculty').on('change', function() {
+          if ( this.value == 'science')
+          {
+            $("#science").removeClass('d-none');
+          }
+          else
+          {
+            $("#science").addClass('d-none');
+          }
+        });
+        $('#faculty').on('change', function() {
+          if ( this.value == 'management')
+          {
+            $("#management").removeClass('d-none');
+          }
+          else
+          {
+            $("#management").addClass('d-none');
+          }
+        });
+    });
+    </script>
   </body>
 </html>
